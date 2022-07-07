@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1655022379 source:d:\projects\investigating a prime pattern\investigating a prime pattern.c
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<time.h>
+
+1656579834 source:d:\projects\project euler\c\investigating a prime pattern\investigating a prime pattern.c
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<time.h>
+
