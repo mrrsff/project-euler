@@ -1,20 +1,31 @@
 import time
+import itertools
 
-def factorial(n):
-    ans = 1
-    for i in range(1,n+1):
-        ans *= i
-    return ans
 
-def isCurious(number):
-    sum = 0
-    for i in list(str(number)):
-        sum += factorial(int(i))
-    return sum==number
+def findDivisors(n):
+    i=2
+    divs = []
+    while i*i<n:
+        if n%i==0:
+            divs.append(i)
+            divs.append(n//i)
+        i+=1
+    return sorted(divs)
 
-ans = []
-for i in range(2,40586):
-    if isCurious(i):
-        ans.append(i)
-print(sum(ans))
-print("elapsed time: ", time.process_time())
+
+def calculate():
+    ans = 0
+    for i in itertools.count(1000):
+        if i>10**5:
+            return ans
+        divisors = findDivisors(i)
+        for j in range(len(divisors)):
+            mult1 = divisors[j]
+            mult2 = divisors[-j-1]
+            allstr = str(mult1) + str(mult2) + str(i)
+            if len(allstr)==9 and set(map(int,list(allstr)))==set(range(1,10)):
+                ans += i
+                print(mult1,"*", mult2,"=", i, "sum:",ans, end="\r")
+                break
+
+print("\nanswer:",calculate()," elapsed time:", time.process_time())
