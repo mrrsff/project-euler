@@ -1,5 +1,4 @@
 import itertools
-from typing import List, Union, Any
 
 with open("p79input.txt") as txt:
     input = txt.readlines()
