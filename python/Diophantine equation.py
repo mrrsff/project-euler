@@ -3,15 +3,15 @@ import math
 
 
 def findxy(D):
-    print(D)
     if int(math.sqrt(D)) == math.sqrt(D):
         return 1
-    for y in itertools.count(1):
-        x = math.sqrt(y * y * D + 1)
-
-        if int(x) == x:
+    for x in itertools.count(2):
+        if x % D == 1 or x % D == D - 1:
+            continue
+        print(D, x)
+        y = ((x ** 2 - 1) / D) ** 0.5
+        if int(y) == y:
             return int(x)
-    return 0
 
 
 maxx = 0
