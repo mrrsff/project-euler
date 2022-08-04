@@ -1,16 +1,10 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import os
 import time
 
-
-options = Options()
-options.headless = False
-options.add_argument("--window-size=1920,1200")
-
 DRIVER_PATH = os.path.abspath("chromedriver.exe")
-driver = webdriver.Chrome(options= options,executable_path=DRIVER_PATH)
+driver = webdriver.Chrome(executable_path=DRIVER_PATH)
 driver.get("https://projecteuler.net/recent")
 soup = BeautifulSoup(driver.page_source, "html.parser")
 recentProblems = soup.find("table", {"id": "problems_table"})
