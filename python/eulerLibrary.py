@@ -1,4 +1,5 @@
 def isPrime(num):
+    num = abs(num)
     if num<=3:
         return num>1
     if not num%2 or not num%3:
