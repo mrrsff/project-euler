@@ -1,21 +1,35 @@
-def entropy(i,j,table):
+def entropy(i,j,table) -> set:
     available = set(range(1,10)).difference(getRow(i,j,table).union(getCol(i,j,table),getSquare(i,j,table)))
     return available
 
-def getRow(i,j,table):
+def getRow(i,j,table) -> set:
     temp = table[i]
     row = set(map(int,temp))-{0}
     return row
 
-def getCol(i,j,table):
+def getCol(i,j,table) -> set:
     temp = list(zip(*table[::-1]))
     col = set(map(int, temp[j]))-{0}
     return col
 
-def getSquare(i,j,table):
+def getSquare(i,j,table) -> set:
     x, y = i//3, j//3
     square = set(map(int, table[a][y*3:y*3+3]) for a in range(x*3,x*3+3))
     return square
+
+def print_board(bo):
+    for i in range(len(bo)):
+        if i % 3 == 0 and i != 0:
+            print("———————|————————|——————")
+
+        for j in range(len(bo[0])):
+            if j % 3 == 0 and j != 0:
+                print(" | ", end="")
+
+            if j == 8:
+                print(bo[i][j])
+            else:
+                print(str(bo[i][j]) + " ", end="")
 
 with open("p096_sudoku.txt") as f:
     tables = []
@@ -30,10 +44,11 @@ with open("p096_sudoku.txt") as f:
             table.append(row)
         tables.append(table[1:])
 
-
-for i in range(len(tables)-49):
+for i in range(len(tables)):
     print(f"Grid {i+1}")
     table = tables[i]
+    print_board(table)
+    print("")
     k = 0
     while k < len(table):
         l = 0
@@ -41,13 +56,9 @@ for i in range(len(tables)-49):
             cell = table[k][l]
             if cell == 0:
                 ent = entropy(k,l,table)
-                print(ent, k,l)
                 if len(ent) == 1:
-                    print(ent, k,l)
                     table[k][l] = list(ent)[0]
-                    print(table)
                     k,l = 0,0
             l += 1
         k += 1
-    for i in table:
-        print(i)
+    print_board(table)
