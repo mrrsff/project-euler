@@ -8,7 +8,6 @@ def findxy(D):
     for x in itertools.count(2):
         if x % D == 1 or x % D == D - 1:
             continue
-        print(D, x)
         y = ((x ** 2 - 1) / D) ** 0.5
         if int(y) == y:
             return int(x)
@@ -16,7 +15,8 @@ def findxy(D):
 
 maxx = 0
 maxindex = 0
-for i in range(1, 1001):
+for i in range(9, 1001):
     if findxy(i) > maxx:
         maxindex = i
         maxx = findxy(i)
+        print(maxx)
