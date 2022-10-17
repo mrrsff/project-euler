@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(2000)
+sys.setrecursionlimit(1857)
 
 
 def exponantiate(n, k):
