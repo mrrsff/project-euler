@@ -16,7 +16,10 @@ def findxy(D):
 maxx = 0
 maxindex = 0
 for i in range(9, 1001):
+    print(i)
     if findxy(i) > maxx:
         maxindex = i
         maxx = findxy(i)
         print(maxx)
+        break
+print(maxindex)

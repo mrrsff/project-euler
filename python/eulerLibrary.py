@@ -61,7 +61,7 @@ def list_primes(n):
     return [p for p in range(2, n+1) if prime[p]]
 
 def isPermutation(n, x):
-    return sorted(list(str(n))) == sorted(list(str(x)))
+    return sorted(str(n)) == sorted(str(x))
 
 def findDivisors(n):
     divisors = [1]
@@ -79,7 +79,6 @@ def findRotations(num, rotation=1):
     if rotation > digits: return []
     rot = (num % 10) * pow(10, digits - 1) + (num // 10)
     return [rot] + findRotations(rot, rotation + 1)
-
 
 def combination(n, r):
     if n - r < r:
